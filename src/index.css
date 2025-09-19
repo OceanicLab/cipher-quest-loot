@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Encrypted Dungeon Design System - Dark Fantasy Theme */
+
+@layer base {
+  :root {
+    /* Core dungeon colors */
+    --background: 220 13% 8%;
+    --foreground: 45 100% 85%;
+
+    --card: 220 13% 12%;
+    --card-foreground: 45 100% 85%;
+
+    --popover: 220 13% 10%;
+    --popover-foreground: 45 100% 85%;
+
+    /* Treasure gold theme */
+    --primary: 45 100% 60%;
+    --primary-foreground: 220 13% 8%;
+
+    /* Encrypted cyan theme */
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 220 13% 8%;
+
+    /* Mystical purple */
+    --muted: 260 30% 25%;
+    --muted-foreground: 260 10% 65%;
+
+    /* Danger red */
+    --accent: 0 75% 55%;
+    --accent-foreground: 45 100% 85%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 45 100% 85%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --ring: 45 100% 60%;
+
+    /* Custom dungeon colors */
+    --treasure-gold: 45 100% 60%;
+    --treasure-glow: 45 100% 80%;
+    --encrypted-cyan: 180 100% 50%;
+    --encrypted-glow: 180 100% 70%;
+    --torch-flame: 25 100% 55%;
+    --torch-glow: 25 100% 70%;
+    --mystical-purple: 260 70% 60%;
+    --danger-red: 0 75% 55%;
+    --stone-grey: 220 13% 25%;
+    --deep-shadow: 220 13% 5%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--deep-shadow)) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--stone-grey) / 0.3) 0%, transparent 50%);
+  }
+
+  /* Dungeon gradients */
+  .gradient-treasure {
+    background: linear-gradient(135deg, hsl(var(--treasure-gold)), hsl(var(--treasure-glow)));
+  }
+  
+  .gradient-encrypted {
+    background: linear-gradient(135deg, hsl(var(--encrypted-cyan)), hsl(var(--encrypted-glow)));
+  }
+  
+  .gradient-torch {
+    background: linear-gradient(135deg, hsl(var(--torch-flame)), hsl(var(--torch-glow)));
+  }
+  
+  .gradient-mystical {
+    background: linear-gradient(135deg, hsl(var(--mystical-purple)), hsl(var(--primary)));
+  }
+
+  /* Glow effects */
+  .glow-treasure {
+    box-shadow: 0 0 20px hsl(var(--treasure-gold) / 0.5), 0 0 40px hsl(var(--treasure-gold) / 0.3);
+  }
+  
+  .glow-encrypted {
+    box-shadow: 0 0 20px hsl(var(--encrypted-cyan) / 0.5), 0 0 40px hsl(var(--encrypted-cyan) / 0.3);
+  }
+  
+  .glow-torch {
+    box-shadow: 0 0 15px hsl(var(--torch-flame) / 0.7), 0 0 30px hsl(var(--torch-flame) / 0.5);
+  }
+
+  /* Animations */
+  @keyframes flicker {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    25% { opacity: 0.8; transform: scale(0.95); }
+    50% { opacity: 0.9; transform: scale(1.05); }
+    75% { opacity: 0.85; transform: scale(0.98); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--treasure-gold) / 0.3), 0 0 40px hsl(var(--treasure-gold) / 0.2);
+    }
+    50% { 
+      box-shadow: 0 0 30px hsl(var(--treasure-gold) / 0.6), 0 0 60px hsl(var(--treasure-gold) / 0.4);
+    }
+  }
+  
+  @keyframes binary-scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+  }
+  
+  @keyframes treasure-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-flicker {
+    animation: flicker 2s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  .animate-binary-scroll {
+    animation: binary-scroll 8s linear infinite;
+  }
+  
+  .animate-treasure-float {
+    animation: treasure-float 4s ease-in-out infinite;
+  }
+
+  /* Text styles */
+  .text-treasure {
+    color: hsl(var(--treasure-gold));
+    text-shadow: 0 0 10px hsl(var(--treasure-gold) / 0.5);
+  }
+  
+  .text-encrypted {
+    color: hsl(var(--encrypted-cyan));
+    text-shadow: 0 0 10px hsl(var(--encrypted-cyan) / 0.5);
+  }
+  
+  .text-mystical {
+    color: hsl(var(--mystical-purple));
+    text-shadow: 0 0 10px hsl(var(--mystical-purple) / 0.5);
+  }
+}
